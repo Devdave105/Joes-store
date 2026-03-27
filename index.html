@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Joe's Store | Premium Women's Fashion in Ghana</title>
+  <meta name="description" content="Ghana's number one women's clothing brand. Shop wide-leg pants, palazzo pants, and elegant casual trousers. Fast delivery nationwide." />
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+</head>
+<body>
+
+  <!-- PRELOADER -->
+  <div id="preloader">
+    <div class="preloader-inner">
+      <span class="preloader-logo">Joe's Store</span>
+      <div class="preloader-bar"><div class="preloader-progress"></div></div>
+    </div>
+  </div>
+
+  <!-- POPUP NOTIFICATIONS -->
+  <div id="popup-container"></div>
+
+  <!-- BACK TO TOP -->
+  <button id="back-to-top" aria-label="Back to top"><i class="fas fa-arrow-up"></i></button>
+
+  <!-- WHATSAPP FLOAT -->
+  <a href="https://wa.me/233558136631?text=Hello%20Joe's%20Store!%20I'd%20like%20to%20order." 
+     class="whatsapp-float" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
+    <i class="fab fa-whatsapp"></i>
+    <span class="whatsapp-tooltip">Order on WhatsApp</span>
+  </a>
+
+  <!-- CART OVERLAY -->
+  <div id="cart-overlay" class="cart-overlay"></div>
+
+  <!-- CART SIDEBAR -->
+  <div id="cart-sidebar" class="cart-sidebar">
+    <div class="cart-header">
+      <h3>Your Bag</h3>
+      <button id="close-cart" aria-label="Close cart"><i class="fas fa-times"></i></button>
+    </div>
+    <div id="cart-items" class="cart-items"></div>
+    <div class="cart-footer">
+      <div class="cart-total">
+        <span>Total</span>
+        <span id="cart-total-price">₵0.00</span>
+      </div>
+      <a id="checkout-whatsapp" href="#" class="btn-checkout" target="_blank">
+        <i class="fab fa-whatsapp"></i> Checkout via WhatsApp
+      </a>
+      <p class="cart-note">Orders processed via WhatsApp for personalised service</p>
+    </div>
+  </div>
+
+  <!-- NAVIGATION -->
+  <header id="navbar" class="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="logo">
+        <span class="logo-joe">Joe's</span>
+        <span class="logo-store">Store</span>
+      </a>
+      <nav class="nav-links" id="nav-links">
+        <a href="#home" class="nav-link">Home</a>
+        <a href="collection.html" class="nav-link">Collection</a>
+        <a href="#about" class="nav-link">About</a>
+        <a href="#reviews" class="nav-link">Reviews</a>
+        <a href="#contact" class="nav-link">Contact</a>
+      </nav>
+      <div class="nav-actions">
+        <button id="cart-btn" class="cart-btn" aria-label="Open cart">
+          <i class="fas fa-shopping-bag"></i>
+          <span id="cart-count" class="cart-count">0</span>
+        </button>
+        <button id="hamburger" class="hamburger" aria-label="Toggle menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- MOBILE NAV -->
+  <div id="mobile-nav" class="mobile-nav">
+    <a href="#home" class="mobile-link">Home</a>
+    <a href="collection.html" class="mobile-link">Collection</a>
+    <a href="#about" class="mobile-link">About</a>
+    <a href="#reviews" class="mobile-link">Reviews</a>
+    <a href="#contact" class="mobile-link">Contact</a>
+  </div>
+
+  <!-- HERO SLIDER -->
+  <section id="home" class="hero">
+    <div class="hero-slides">
+      <div class="hero-slide active" style="background-image: url('https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=1600&q=80')">
+        <div class="slide-overlay"></div>
+        <div class="slide-content">
+          <span class="slide-badge">✦ Number One Clothing Brand in Ghana ✦</span>
+          <h1 class="slide-title">Redefining<br/><em>Everyday Elegance</em></h1>
+          <p class="slide-sub">Crafted for the woman who moves with purpose and dresses with intention.</p>
+          <a href="collection.html" class="btn-hero">Shop Collection <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </div>
+      <div class="hero-slide" style="background-image: url('https://images.unsplash.com/photo-1469334031218-e382a71b716b?w=1600&q=80')">
+        <div class="slide-overlay"></div>
+        <div class="slide-content">
+          <span class="slide-badge">✦ Number One Clothing Brand in Ghana ✦</span>
+          <h1 class="slide-title">Confidence<br/><em>in Every Step</em></h1>
+          <p class="slide-sub">Wide-leg silhouettes and palazzo cuts — because elegance should never be uncomfortable.</p>
+          <a href="collection.html" class="btn-hero">Shop Collection <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </div>
+      <div class="hero-slide" style="background-image: url('https://images.unsplash.com/photo-1483985988355-763728e1935b?w=1600&q=80')">
+        <div class="slide-overlay"></div>
+        <div class="slide-content">
+          <span class="slide-badge">✦ Number One Clothing Brand in Ghana ✦</span>
+          <h1 class="slide-title">Designed for<br/><em>Modern Women</em></h1>
+          <p class="slide-sub">Timeless fabrics, contemporary cuts — premium fashion made for Ghana's women.</p>
+          <a href="collection.html" class="btn-hero">Shop Collection <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </div>
+    </div>
+    <div class="hero-controls">
+      <button class="hero-prev" aria-label="Previous slide"><i class="fas fa-chevron-left"></i></button>
+      <div class="hero-dots">
+        <span class="hero-dot active" data-slide="0"></span>
+        <span class="hero-dot" data-slide="1"></span>
+        <span class="hero-dot" data-slide="2"></span>
+      </div>
+      <button class="hero-next" aria-label="Next slide"><i class="fas fa-chevron-right"></i></button>
+    </div>
+  </section>
+
+  <!-- TICKER -->
+  <div class="ticker-wrap">
+    <div class="ticker-track">
+      <span>Fast Delivery in Ghana</span><span class="ticker-dot">✦</span>
+      <span>Premium Quality Fabrics</span><span class="ticker-dot">✦</span>
+      <span>Affordable Prices</span><span class="ticker-dot">✦</span>
+      <span>Trusted by Women Nationwide</span><span class="ticker-dot">✦</span>
+      <span>Free Returns Within 7 Days</span><span class="ticker-dot">✦</span>
+      <span>New Arrivals Weekly</span><span class="ticker-dot">✦</span>
+      <span>Fast Delivery in Ghana</span><span class="ticker-dot">✦</span>
+      <span>Premium Quality Fabrics</span><span class="ticker-dot">✦</span>
+      <span>Affordable Prices</span><span class="ticker-dot">✦</span>
+      <span>Trusted by Women Nationwide</span><span class="ticker-dot">✦</span>
+    </div>
+  </div>
+
+  <!-- COLLECTION PREVIEW -->
+  <section id="collection-preview" class="section collection-preview">
+    <div class="container">
+      <div class="section-head" data-aos="fade-up">
+        <span class="section-label">Our Collection</span>
+        <h2 class="section-title">Pieces You'll <em>Love</em></h2>
+        <p class="section-sub">Curated styles that blend elegance with comfort for the modern Ghanaian woman.</p>
+      </div>
+      <div class="products-grid preview-grid" id="preview-grid"></div>
+      <div class="collection-cta" data-aos="fade-up">
+        <a href="collection.html" class="btn-primary">View Full Collection <i class="fas fa-arrow-right"></i></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about" class="section about-section">
+    <div class="container about-container">
+      <div class="about-image" data-aos="fade-right">
+        <img src="https://images.unsplash.com/photo-1558769132-cb1aea458c5e?w=800&q=80" alt="Joe's Store brand" />
+        <div class="about-badge">Est. 2018 · Accra, Ghana</div>
+      </div>
+      <div class="about-content" data-aos="fade-left">
+        <span class="section-label">Our Story</span>
+        <h2 class="section-title">Elegance is not a<br/><em>luxury — it's a right.</em></h2>
+        <p>Joe's Store was born from a simple belief: every woman in Ghana deserves to dress beautifully without compromising her budget or comfort. Founded in Accra, we've been dressing confident, modern women since 2018 — one palazzo pant at a time.</p>
+        <p>We source only the finest fabrics, design with the African woman's figure in mind, and deliver directly to your door with care and speed. From Madina to Kumasi, from Ho to Tamale — we dress Ghana's women with pride.</p>
+        <div class="about-stats">
+          <div class="stat"><strong>5,000+</strong><span>Happy Customers</span></div>
+          <div class="stat"><strong>200+</strong><span>Styles</span></div>
+          <div class="stat"><strong>2–3 Days</strong><span>Nationwide Delivery</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY CHOOSE US -->
+  <section class="section why-section">
+    <div class="container">
+      <div class="section-head" data-aos="fade-up">
+        <span class="section-label">Why Us</span>
+        <h2 class="section-title">The Joe's Store <em>Difference</em></h2>
+      </div>
+      <div class="why-grid">
+        <div class="why-card" data-aos="fade-up" data-aos-delay="0">
+          <div class="why-icon"><i class="fas fa-gem"></i></div>
+          <h4>Premium Fabrics</h4>
+          <p>We use only high-quality materials — soft, breathable, and built to last season after season.</p>
+        </div>
+        <div class="why-card" data-aos="fade-up" data-aos-delay="100">
+          <div class="why-icon"><i class="fas fa-star"></i></div>
+          <h4>Elegant Styles</h4>
+          <p>Every piece is designed with care, combining contemporary trends with timeless silhouettes.</p>
+        </div>
+        <div class="why-card" data-aos="fade-up" data-aos-delay="200">
+          <div class="why-icon"><i class="fas fa-truck"></i></div>
+          <h4>Fast Delivery</h4>
+          <p>Nationwide delivery in 2–3 business days. Same-day delivery available within Accra.</p>
+        </div>
+        <div class="why-card" data-aos="fade-up" data-aos-delay="300">
+          <div class="why-icon"><i class="fas fa-heart"></i></div>
+          <h4>Reliable Service</h4>
+          <p>Responsive customer support via WhatsApp. We're here for you before, during and after your order.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- COUNTDOWN -->
+  <section class="section countdown-section">
+    <div class="container">
+      <div class="countdown-inner" data-aos="zoom-in">
+        <span class="section-label">Limited Time Offer</span>
+        <h2 class="countdown-title">Sale Ends In</h2>
+        <div class="countdown-timer" id="countdown">
+          <div class="time-block"><span id="c-days">00</span><label>Days</label></div>
+          <div class="time-sep">:</div>
+          <div class="time-block"><span id="c-hours">00</span><label>Hours</label></div>
+          <div class="time-sep">:</div>
+          <div class="time-block"><span id="c-mins">00</span><label>Minutes</label></div>
+          <div class="time-sep">:</div>
+          <div class="time-block"><span id="c-secs">00</span><label>Seconds</label></div>
+        </div>
+        <p class="countdown-text">Get <strong>15% off</strong> your first order. Use code <strong>JOESLOVE</strong> at checkout.</p>
+        <a href="collection.html" class="btn-hero">Shop the Sale</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- REVIEWS -->
+  <section id="reviews" class="section reviews-section">
+    <div class="container">
+      <div class="section-head" data-aos="fade-up">
+        <span class="section-label">Testimonials</span>
+        <h2 class="section-title">What Our <em>Customers Say</em></h2>
+        <div class="google-badge"><i class="fab fa-google"></i> Verified Reviews</div>
+      </div>
+      <div class="reviews-grid">
+        <div class="review-card" data-aos="fade-up" data-aos-delay="0">
+          <div class="review-stars">★★★★★</div>
+          <p>"Amazing quality — the fabric is so soft and the fit is absolutely perfect. I've received so many compliments. Delivery was fast too, just 2 days!"</p>
+          <div class="reviewer">
+            <div class="reviewer-avatar">AK</div>
+            <div><strong>Adwoa Konadu</strong><span>Accra, Ghana</span></div>
+          </div>
+        </div>
+        <div class="review-card" data-aos="fade-up" data-aos-delay="100">
+          <div class="review-stars">★★★★★</div>
+          <p>"I ordered the palazzo pants and they are everything! Very elegant and comfortable. Joe's Store is now my go-to brand. 100% recommend to everyone."</p>
+          <div class="reviewer">
+            <div class="reviewer-avatar">EA</div>
+            <div><strong>Efua Asantewaa</strong><span>Kumasi, Ghana</span></div>
+          </div>
+        </div>
+        <div class="review-card" data-aos="fade-up" data-aos-delay="200">
+          <div class="review-stars">★★★★★</div>
+          <p>"The wide-leg trousers are stunning. The quality exceeded my expectations for the price. Will definitely order again. Customer service was excellent!"</p>
+          <div class="reviewer">
+            <div class="reviewer-avatar">AB</div>
+            <div><strong>Ama Boateng</strong><span>Takoradi, Ghana</span></div>
+          </div>
+        </div>
+        <div class="review-card" data-aos="fade-up" data-aos-delay="300">
+          <div class="review-stars">★★★★★</div>
+          <p>"Ordered 3 items and all arrived in perfect condition. The packaging was beautiful too. This store truly cares about their customers. Very impressed!"</p>
+          <div class="reviewer">
+            <div class="reviewer-avatar">AA</div>
+            <div><strong>Abena Acheampong</strong><span>Tema, Ghana</span></div>
+          </div>
+        </div>
+        <div class="review-card" data-aos="fade-up" data-aos-delay="400">
+          <div class="review-stars">★★★★★</div>
+          <p>"The best fashion brand in Ghana period. I love the styles, love the quality, love the prices. My friends keep asking me where I shop. Joe's Store forever!"</p>
+          <div class="reviewer">
+            <div class="reviewer-avatar">AF</div>
+            <div><strong>Akosua Frimpong</strong><span>Madina, Accra</span></div>
+          </div>
+        </div>
+        <div class="review-card" data-aos="fade-up" data-aos-delay="500">
+          <div class="review-stars">★★★★★</div>
+          <p>"Received my order in 2 days flat. The casual trousers are so well made and the colour is exactly as shown. Outstanding service from a truly premium brand!"</p>
+          <div class="reviewer">
+            <div class="reviewer-avatar">YD</div>
+            <div><strong>Yaa Darko</strong><span>Kasoa, Ghana</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="reviews-cta" data-aos="fade-up">
+        <a href="collection.html" class="btn-primary">Shop Now <i class="fas fa-arrow-right"></i></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section faq-section">
+    <div class="container faq-container">
+      <div class="section-head" data-aos="fade-up">
+        <span class="section-label">FAQ</span>
+        <h2 class="section-title">Common <em>Questions</em></h2>
+      </div>
+      <div class="faq-list" data-aos="fade-up">
+        <div class="faq-item">
+          <button class="faq-q">How long does delivery take in Ghana? <i class="fas fa-plus"></i></button>
+          <div class="faq-a"><p>We deliver nationwide within 2–3 business days. For orders within Accra, same-day or next-day delivery is often available. You'll receive a tracking update via WhatsApp once your order ships.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">How do I find my correct size? <i class="fas fa-plus"></i></button>
+          <div class="faq-a"><p>Each product page includes a detailed size guide. We offer sizes S, M, L, and XL. If you're between sizes, we recommend sizing up for a more comfortable fit. You can also message us on WhatsApp and we'll help you choose the right size.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">How do I place an order? <i class="fas fa-plus"></i></button>
+          <div class="faq-a"><p>You can add items to your cart and checkout via WhatsApp for personalised service. Alternatively, click the "Order on WhatsApp" button on any product page to send us a direct message with your selection.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">What payment methods do you accept? <i class="fas fa-plus"></i></button>
+          <div class="faq-a"><p>We accept Mobile Money (MTN MoMo, Vodafone Cash, AirtelTigo Money), bank transfers, and cash on delivery within Accra. Payment details are confirmed when you place your order via WhatsApp.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">Can I return or exchange an item? <i class="fas fa-plus"></i></button>
+          <div class="faq-a"><p>Yes! We offer returns or exchanges within 7 days of delivery for unworn, unwashed items with original tags. Contact us on WhatsApp to initiate a return. Your satisfaction is our priority.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">Do you ship outside Ghana? <i class="fas fa-plus"></i></button>
+          <div class="faq-a"><p>Currently, we ship exclusively within Ghana. We are working on expanding to other West African countries soon. Stay tuned to our social media for updates!</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="section contact-section">
+    <div class="container contact-container">
+      <div class="contact-info" data-aos="fade-right">
+        <span class="section-label">Contact Us</span>
+        <h2 class="section-title">Get In <em>Touch</em></h2>
+        <div class="contact-item"><i class="fas fa-map-marker-alt"></i><p>Accra Madina Zongo Junction, Accra, Ghana</p></div>
+        <div class="contact-item"><i class="fas fa-phone"></i><p><a href="tel:+233558136631">0558 136 631</a></p></div>
+        <div class="contact-item"><i class="fas fa-envelope"></i><p><a href="mailto:Cutekeydy@Email.com">Cutekeydy@Email.com</a></p></div>
+        <div class="contact-item"><i class="fab fa-whatsapp"></i><p><a href="https://wa.me/233558136631" target="_blank">Chat on WhatsApp</a></p></div>
+        <div class="social-links">
+          <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+          <a href="#" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+          <a href="https://wa.me/233558136631" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+        </div>
+      </div>
+      <div class="contact-form-wrap" data-aos="fade-left">
+        <form id="contact-form" class="contact-form" novalidate>
+          <div class="form-group">
+            <input type="text" id="cf-name" placeholder="Your Name" required />
+          </div>
+          <div class="form-group">
+            <input type="tel" id="cf-phone" placeholder="Phone Number" />
+          </div>
+          <div class="form-group">
+            <input type="email" id="cf-email" placeholder="Email Address" />
+          </div>
+          <div class="form-group">
+            <textarea id="cf-msg" rows="5" placeholder="Your Message" required></textarea>
+          </div>
+          <button type="submit" class="btn-primary full-width">Send Message <i class="fas fa-paper-plane"></i></button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-col">
+        <a href="index.html" class="logo">
+          <span class="logo-joe">Joe's</span>
+          <span class="logo-store">Store</span>
+        </a>
+        <p class="footer-tagline">Ghana's premier destination for elegant women's fashion. Dress with confidence, every day.</p>
+        <div class="social-links">
+          <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+          <a href="#" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+          <a href="https://wa.me/233558136631" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h5>Quick Links</h5>
+        <ul>
+          <li><a href="#home">Home</a></li>
+          <li><a href="collection.html">Collection</a></li>
+          <li><a href="#about">About Us</a></li>
+          <li><a href="#reviews">Reviews</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Categories</h5>
+        <ul>
+          <li><a href="collection.html">Wide-Leg Pants</a></li>
+          <li><a href="collection.html">Palazzo Pants</a></li>
+          <li><a href="collection.html">Casual Trousers</a></li>
+          <li><a href="collection.html">New Arrivals</a></li>
+          <li><a href="collection.html">Sale Items</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Contact</h5>
+        <ul class="footer-contact">
+          <li><i class="fas fa-map-marker-alt"></i> Accra Madina Zongo Junction</li>
+          <li><i class="fas fa-phone"></i> <a href="tel:+233558136631">0558 136 631</a></li>
+          <li><i class="fas fa-envelope"></i> <a href="mailto:Cutekeydy@Email.com">Cutekeydy@Email.com</a></li>
+        </ul>
+        <div class="footer-hours">
+          <p><strong>Hours:</strong></p>
+          <p>Mon–Sat: 8am – 8pm</p>
+          <p>Sunday: 10am – 6pm</p>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 Joe's Store. All rights reserved. | Made with <i class="fas fa-heart" style="color:#e76f51"></i> in Ghana</p>
+    </div>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+  <script src="main.js"></script>
+</body>
+</html>
