@@ -3,181 +3,141 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Collection | Joe's Store – Premium Women's Fashion Ghana</title>
-  <meta name="description" content="Browse Joe's Store full collection of wide-leg pants, palazzo pants, and casual trousers. Shop now with fast delivery across Ghana." />
+  <title>Collection – Joe Wears</title>
   <link rel="stylesheet" href="style.css">
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
 </head>
-<body class="collection-page">
+<body>
 
-  <!-- POPUP NOTIFICATIONS -->
-  <div id="popup-container"></div>
-
-  <!-- BACK TO TOP -->
-  <button id="back-to-top" aria-label="Back to top"><i class="fas fa-arrow-up"></i></button>
-
-  <!-- WHATSAPP FLOAT -->
-  <a href="https://wa.me/233558136631?text=Hello%20Joe's%20Store!%20I'd%20like%20to%20order." 
-     class="whatsapp-float" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
-    <i class="fab fa-whatsapp"></i>
-    <span class="whatsapp-tooltip">Order on WhatsApp</span>
-  </a>
-
-  <!-- CART OVERLAY -->
-  <div id="cart-overlay" class="cart-overlay"></div>
-
-  <!-- CART SIDEBAR -->
-  <div id="cart-sidebar" class="cart-sidebar">
-    <div class="cart-header">
-      <h3>Your Bag</h3>
-      <button id="close-cart" aria-label="Close cart"><i class="fas fa-times"></i></button>
-    </div>
-    <div id="cart-items" class="cart-items"></div>
-    <div class="cart-footer">
-      <div class="cart-total">
-        <span>Total</span>
-        <span id="cart-total-price">₵0.00</span>
-      </div>
-      <a id="checkout-whatsapp" href="#" class="btn-checkout" target="_blank">
-        <i class="fab fa-whatsapp"></i> Checkout via WhatsApp
-      </a>
-      <p class="cart-note">Orders processed via WhatsApp for personalised service</p>
-    </div>
+  <!-- POPUP NOTIFICATION -->
+  <div id="popup-notification" class="popup-notif hidden">
+    <span class="popup-dot"></span>
+    <span id="popup-text"></span>
+    <button class="popup-close" onclick="document.getElementById('popup-notification').classList.add('hidden')">×</button>
   </div>
 
-  <!-- NAVIGATION -->
-  <header id="navbar" class="navbar">
-    <div class="nav-container">
-      <a href="index.html" class="logo">
-        <span class="logo-joe">Joe's</span>
-        <span class="logo-store">Store</span>
-      </a>
-      <nav class="nav-links" id="nav-links">
-        <a href="index.html" class="nav-link">Home</a>
-        <a href="collection.html" class="nav-link active">Collection</a>
-        <a href="index.html#about" class="nav-link">About</a>
-        <a href="index.html#reviews" class="nav-link">Reviews</a>
-        <a href="index.html#contact" class="nav-link">Contact</a>
-      </nav>
+  <!-- STICKY NAV -->
+  <header id="navbar">
+    <nav class="nav-container">
+      <a href="index.html" class="nav-logo">Joe <span>Wears</span></a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html" onclick="closeMenu()">Home</a></li>
+        <li><a href="collection.html" class="active" onclick="closeMenu()">Collection</a></li>
+        <li><a href="index.html#about" onclick="closeMenu()">About</a></li>
+        <li><a href="index.html#reviews" onclick="closeMenu()">Reviews</a></li>
+        <li><a href="index.html#contact" onclick="closeMenu()">Contact</a></li>
+      </ul>
       <div class="nav-actions">
-        <button id="cart-btn" class="cart-btn" aria-label="Open cart">
-          <i class="fas fa-shopping-bag"></i>
-          <span id="cart-count" class="cart-count">0</span>
+        <button class="cart-toggle" id="cartToggle" aria-label="Open Cart">
+          <i class="fas fa-bag-shopping"></i>
+          <span class="cart-badge" id="cartBadge">0</span>
         </button>
-        <button id="hamburger" class="hamburger" aria-label="Toggle menu">
+        <button class="hamburger" id="hamburger" aria-label="Toggle menu">
           <span></span><span></span><span></span>
         </button>
       </div>
-    </div>
+    </nav>
   </header>
 
-  <!-- MOBILE NAV -->
-  <div id="mobile-nav" class="mobile-nav">
-    <a href="index.html" class="mobile-link">Home</a>
-    <a href="collection.html" class="mobile-link">Collection</a>
-    <a href="index.html#about" class="mobile-link">About</a>
-    <a href="index.html#reviews" class="mobile-link">Reviews</a>
-    <a href="index.html#contact" class="mobile-link">Contact</a>
-  </div>
-
-  <!-- PAGE HERO -->
-  <div class="page-hero">
-    <div class="page-hero-content">
-      <span class="section-label">Explore</span>
-      <h1>Our <em>Collection</em></h1>
-      <p>Discover 15+ premium styles crafted for confidence and elegance.</p>
+  <!-- CART MODAL -->
+  <div class="cart-overlay" id="cartOverlay"></div>
+  <aside class="cart-drawer" id="cartDrawer">
+    <div class="cart-header">
+      <h3>Your Cart</h3>
+      <button class="cart-close" id="cartClose">×</button>
     </div>
-  </div>
-
-  <!-- TICKER -->
-  <div class="ticker-wrap">
-    <div class="ticker-track">
-      <span>Fast Delivery in Ghana</span><span class="ticker-dot">✦</span>
-      <span>Premium Quality Fabrics</span><span class="ticker-dot">✦</span>
-      <span>Affordable Prices</span><span class="ticker-dot">✦</span>
-      <span>Trusted by Women Nationwide</span><span class="ticker-dot">✦</span>
-      <span>Free Returns Within 7 Days</span><span class="ticker-dot">✦</span>
-      <span>New Arrivals Weekly</span><span class="ticker-dot">✦</span>
-      <span>Fast Delivery in Ghana</span><span class="ticker-dot">✦</span>
-      <span>Premium Quality Fabrics</span><span class="ticker-dot">✦</span>
+    <div class="cart-items" id="cartItems">
+      <p class="cart-empty">Your cart is empty.</p>
     </div>
-  </div>
-
-  <!-- FILTERS -->
-  <section class="collection-section">
-    <div class="container">
-      <div class="filter-bar" data-aos="fade-up">
-        <div class="filter-group">
-          <button class="filter-btn active" data-filter="all">All</button>
-          <button class="filter-btn" data-filter="wide-leg">Wide-Leg</button>
-          <button class="filter-btn" data-filter="palazzo">Palazzo</button>
-          <button class="filter-btn" data-filter="casual">Casual</button>
-        </div>
-        <div class="sort-group">
-          <select id="sort-select" aria-label="Sort products">
-            <option value="default">Sort: Featured</option>
-            <option value="price-low">Price: Low to High</option>
-            <option value="price-high">Price: High to Low</option>
-            <option value="name">Name: A–Z</option>
-          </select>
-        </div>
+    <div class="cart-footer" id="cartFooter" style="display:none">
+      <div class="cart-total">Total: <strong id="cartTotal">₵0.00</strong></div>
+      <div class="cart-form">
+        <h4>Your Details (Required)</h4>
+        <input type="text" id="custName" placeholder="Full Name *" />
+        <input type="tel" id="custPhone" placeholder="Phone Number *" />
+        <input type="text" id="custLocation" placeholder="Location / City *" />
+        <input type="text" id="custAddress" placeholder="Delivery Address *" />
+        <button class="btn-whatsapp-order" onclick="sendToWhatsApp()">
+          <i class="fab fa-whatsapp"></i> Order via WhatsApp
+        </button>
       </div>
-      <div class="products-grid" id="collection-grid"></div>
+    </div>
+  </aside>
+
+  <!-- PAGE HEADER -->
+  <div class="page-hero">
+    <div class="page-hero-overlay"></div>
+    <div class="page-hero-content">
+      <span class="section-label light">Joe Wears</span>
+      <h1>Our Full Collection</h1>
+      <p>Timeless, premium styles for the modern Ghanaian woman</p>
+    </div>
+  </div>
+
+  <!-- FILTER BAR -->
+  <div class="filter-bar">
+    <div class="container">
+      <div class="filter-tabs">
+        <button class="filter-btn active" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="wide-leg">Wide-Leg</button>
+        <button class="filter-btn" data-filter="palazzo">Palazzo</button>
+        <button class="filter-btn" data-filter="casual">Casual</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- FULL COLLECTION GRID -->
+  <section class="section">
+    <div class="container">
+      <div class="products-grid full-grid" id="collectionGrid"></div>
     </div>
   </section>
 
   <!-- FOOTER -->
   <footer class="footer">
-    <div class="footer-container">
-      <div class="footer-col">
-        <a href="index.html" class="logo">
-          <span class="logo-joe">Joe's</span>
-          <span class="logo-store">Store</span>
-        </a>
-        <p class="footer-tagline">Ghana's premier destination for elegant women's fashion.</p>
-        <div class="social-links">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <a href="index.html" class="nav-logo footer-logo">Joe <span>Wears</span></a>
+        <p>Premium women's fashion for the modern Ghanaian woman. Elegance. Confidence. Style.</p>
+        <div class="social-icons">
           <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-          <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+          <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
           <a href="#" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
           <a href="https://wa.me/233558136631" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
         </div>
       </div>
-      <div class="footer-col">
+      <div class="footer-links">
         <h5>Quick Links</h5>
         <ul>
           <li><a href="index.html">Home</a></li>
           <li><a href="collection.html">Collection</a></li>
-          <li><a href="index.html#about">About Us</a></li>
+          <li><a href="index.html#about">About</a></li>
           <li><a href="index.html#reviews">Reviews</a></li>
           <li><a href="index.html#contact">Contact</a></li>
         </ul>
       </div>
-      <div class="footer-col">
-        <h5>Categories</h5>
-        <ul>
-          <li><a href="#">Wide-Leg Pants</a></li>
-          <li><a href="#">Palazzo Pants</a></li>
-          <li><a href="#">Casual Trousers</a></li>
-          <li><a href="#">New Arrivals</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
+      <div class="footer-contact">
         <h5>Contact</h5>
-        <ul class="footer-contact">
-          <li><i class="fas fa-map-marker-alt"></i> Accra Madina Zongo Junction</li>
-          <li><i class="fas fa-phone"></i> <a href="tel:+233558136631">0558 136 631</a></li>
-          <li><i class="fas fa-envelope"></i> <a href="mailto:Cutekeydy@Email.com">Cutekeydy@Email.com</a></li>
-        </ul>
+        <p><i class="fas fa-location-dot"></i> Accra Madina Zongo Junction</p>
+        <p><i class="fas fa-phone"></i> 0558136631</p>
+        <p><i class="fas fa-envelope"></i> Cutekeydy@Email.com</p>
       </div>
     </div>
     <div class="footer-bottom">
-      <p>© 2025 Joe's Store. All rights reserved. | Made with <i class="fas fa-heart" style="color:#e76f51"></i> in Ghana</p>
+      <p>© 2025 Joe Wears. All rights reserved. | Crafted with ♥ in Ghana</p>
     </div>
   </footer>
+
+  <a href="https://wa.me/233558136631?text=Hello%20Joe%20Wears!%20I%27d%20like%20to%20order." class="whatsapp-float" target="_blank">
+    <i class="fab fa-whatsapp"></i>
+    <span>Order Now</span>
+  </a>
+
+  <button class="back-to-top" id="backToTop" aria-label="Back to top">
+    <i class="fas fa-arrow-up"></i>
+  </button>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
   <script src="main.js"></script>
