@@ -4,73 +4,82 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Collection – Joe Wears</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-  <!-- POPUP NOTIFICATION -->
-  <div id="popup-notification" class="popup-notif hidden">
+  <!-- POPUP TOP BAR -->
+  <div id="popup" class="popup hidden">
     <span class="popup-dot"></span>
-    <span id="popup-text"></span>
-    <button class="popup-close" onclick="document.getElementById('popup-notification').classList.add('hidden')">×</button>
+    <span id="popup-msg"></span>
+    <button class="popup-close" onclick="document.getElementById('popup').classList.add('hidden')">✕</button>
   </div>
 
-  <!-- STICKY NAV -->
+  <!-- NAVBAR -->
   <header id="navbar">
-    <nav class="nav-container">
-      <a href="index.html" class="nav-logo">Joe <span>Wears</span></a>
+    <div class="nav-wrap">
+      <a href="index.html" class="logo">Joe <span>Wears</span></a>
+
       <ul class="nav-links" id="navLinks">
-        <li><a href="index.html" onclick="closeMenu()">Home</a></li>
-        <li><a href="collection.html" class="active" onclick="closeMenu()">Collection</a></li>
-        <li><a href="index.html#about" onclick="closeMenu()">About</a></li>
-        <li><a href="index.html#reviews" onclick="closeMenu()">Reviews</a></li>
-        <li><a href="index.html#contact" onclick="closeMenu()">Contact</a></li>
+        <li class="drawer-brand">Joe <span>Wears</span></li>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="collection.html" class="active">Collection</a></li>
+        <li><a href="index.html#about">About</a></li>
+        <li><a href="index.html#reviews">Reviews</a></li>
+        <li><a href="index.html#contact">Contact</a></li>
+        <li class="drawer-contact"><i class="fas fa-phone"></i> 0558136631</li>
       </ul>
-      <div class="nav-actions">
-        <button class="cart-toggle" id="cartToggle" aria-label="Open Cart">
+
+      <div class="nav-right">
+        <button class="cart-icon" id="cartToggle" aria-label="Cart">
           <i class="fas fa-bag-shopping"></i>
-          <span class="cart-badge" id="cartBadge">0</span>
+          <span class="cart-count" id="cartCount"></span>
         </button>
-        <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+        <button class="ham" id="ham" aria-label="Open menu" aria-expanded="false">
           <span></span><span></span><span></span>
         </button>
       </div>
-    </nav>
+    </div>
   </header>
 
-  <!-- CART MODAL -->
-  <div class="cart-overlay" id="cartOverlay"></div>
+  <!-- MOBILE BACKDROP -->
+  <div class="mob-bg" id="mobBg"></div>
+
+  <!-- CART DRAWER -->
+  <div class="cart-bg" id="cartBg"></div>
   <aside class="cart-drawer" id="cartDrawer">
-    <div class="cart-header">
+    <div class="cart-head">
       <h3>Your Cart</h3>
-      <button class="cart-close" id="cartClose">×</button>
+      <button id="cartClose">✕</button>
     </div>
-    <div class="cart-items" id="cartItems">
-      <p class="cart-empty">Your cart is empty.</p>
+    <div class="cart-body" id="cartBody">
+      <p class="empty-msg">Your cart is empty.</p>
     </div>
-    <div class="cart-footer" id="cartFooter" style="display:none">
-      <div class="cart-total">Total: <strong id="cartTotal">₵0.00</strong></div>
-      <div class="cart-form">
-        <h4>Your Details (Required)</h4>
-        <input type="text" id="custName" placeholder="Full Name *" />
-        <input type="tel" id="custPhone" placeholder="Phone Number *" />
-        <input type="text" id="custLocation" placeholder="Location / City *" />
-        <input type="text" id="custAddress" placeholder="Delivery Address *" />
-        <button class="btn-whatsapp-order" onclick="sendToWhatsApp()">
+    <div class="cart-foot" id="cartFoot">
+      <div class="total-row">Total: <strong id="cartTotal">₵0.00</strong></div>
+      <div class="order-form">
+        <p class="form-ttl">Your Details <em>(required before ordering)</em></p>
+        <input id="f-name"     type="text" placeholder="Full Name *" />
+        <input id="f-phone"    type="tel"  placeholder="Phone Number *" />
+        <input id="f-location" type="text" placeholder="Location / City *" />
+        <input id="f-address"  type="text" placeholder="Delivery Address *" />
+        <button class="wa-btn" onclick="sendWhatsApp()">
           <i class="fab fa-whatsapp"></i> Order via WhatsApp
         </button>
       </div>
     </div>
   </aside>
 
-  <!-- PAGE HEADER -->
+  <!-- PAGE HERO -->
   <div class="page-hero">
-    <div class="page-hero-overlay"></div>
-    <div class="page-hero-content">
-      <span class="section-label light">Joe Wears</span>
+    <div class="page-hero-ov"></div>
+    <div class="page-hero-txt">
+      <span class="sec-label light">Joe Wears</span>
       <h1>Our Full Collection</h1>
       <p>Timeless, premium styles for the modern Ghanaian woman</p>
     </div>
@@ -80,64 +89,44 @@
   <div class="filter-bar">
     <div class="container">
       <div class="filter-tabs">
-        <button class="filter-btn active" data-filter="all">All</button>
-        <button class="filter-btn" data-filter="wide-leg">Wide-Leg</button>
-        <button class="filter-btn" data-filter="palazzo">Palazzo</button>
-        <button class="filter-btn" data-filter="casual">Casual</button>
+        <button class="ftab active" data-f="all">All</button>
+        <button class="ftab" data-f="wide-leg">Wide-Leg</button>
+        <button class="ftab" data-f="palazzo">Palazzo</button>
+        <button class="ftab" data-f="casual">Casual</button>
       </div>
     </div>
   </div>
 
-  <!-- FULL COLLECTION GRID -->
+  <!-- COLLECTION GRID -->
   <section class="section">
     <div class="container">
-      <div class="products-grid full-grid" id="collectionGrid"></div>
+      <div class="prod-grid" id="collGrid"></div>
     </div>
   </section>
 
   <!-- FOOTER -->
   <footer class="footer">
     <div class="container footer-grid">
-      <div class="footer-brand">
-        <a href="index.html" class="nav-logo footer-logo">Joe <span>Wears</span></a>
-        <p>Premium women's fashion for the modern Ghanaian woman. Elegance. Confidence. Style.</p>
-        <div class="social-icons">
-          <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-          <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-          <a href="#" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
-          <a href="https://wa.me/233558136631" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+      <div class="f-brand">
+        <a href="index.html" class="logo footer-logo">Joe <span>Wears</span></a>
+        <p>Premium women's fashion for the modern Ghanaian woman.</p>
+        <div class="socials">
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-tiktok"></i></a>
+          <a href="https://wa.me/233558136631" target="_blank"><i class="fab fa-whatsapp"></i></a>
         </div>
       </div>
-      <div class="footer-links">
-        <h5>Quick Links</h5>
-        <ul>
-          <li><a href="index.html">Home</a></li>
-          <li><a href="collection.html">Collection</a></li>
-          <li><a href="index.html#about">About</a></li>
-          <li><a href="index.html#reviews">Reviews</a></li>
-          <li><a href="index.html#contact">Contact</a></li>
-        </ul>
-      </div>
-      <div class="footer-contact">
-        <h5>Contact</h5>
-        <p><i class="fas fa-location-dot"></i> Accra Madina Zongo Junction</p>
-        <p><i class="fas fa-phone"></i> 0558136631</p>
-        <p><i class="fas fa-envelope"></i> Cutekeydy@Email.com</p>
-      </div>
+      <div class="f-col"><h5>Quick Links</h5><ul><li><a href="index.html">Home</a></li><li><a href="collection.html">Collection</a></li><li><a href="index.html#about">About</a></li><li><a href="index.html#reviews">Reviews</a></li><li><a href="index.html#contact">Contact</a></li></ul></div>
+      <div class="f-col f-contact"><h5>Contact</h5><p><i class="fas fa-location-dot"></i>Accra Madina Zongo Junction</p><p><i class="fas fa-phone"></i>0558136631</p><p><i class="fas fa-envelope"></i>Cutekeydy@Email.com</p></div>
     </div>
-    <div class="footer-bottom">
-      <p>© 2025 Joe Wears. All rights reserved. | Crafted with ♥ in Ghana</p>
-    </div>
+    <div class="footer-bottom"><p>© 2025 Joe Wears. All rights reserved. | Crafted with ♥ in Ghana</p></div>
   </footer>
 
-  <a href="https://wa.me/233558136631?text=Hello%20Joe%20Wears!%20I%27d%20like%20to%20order." class="whatsapp-float" target="_blank">
-    <i class="fab fa-whatsapp"></i>
-    <span>Order Now</span>
+  <a class="wa-float" href="https://wa.me/233558136631?text=Hello%20Joe%20Wears!%20I%27d%20like%20to%20order." target="_blank">
+    <i class="fab fa-whatsapp"></i><span>Order Now</span>
   </a>
-
-  <button class="back-to-top" id="backToTop" aria-label="Back to top">
-    <i class="fas fa-arrow-up"></i>
-  </button>
+  <button class="top-btn" id="topBtn"><i class="fas fa-arrow-up"></i></button>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
   <script src="main.js"></script>
